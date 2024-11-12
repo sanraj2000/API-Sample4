@@ -1,0 +1,60 @@
+#
+# Copyright Super iPaaS Integration LLC, an IBM Company 2024
+#
+kind: Api
+apiVersion: api.webmethods.io/beta
+metadata:
+  name: APIPolicies_DevUI_23
+  namespace: dev_all
+  version: alph
+  tags:
+    - one
+    - two
+    - three
+    - sample
+  type: REST
+spec:
+  api-spec:
+    $path: petstore.yaml
+  policy-sequence:
+    - $ref: dev_all:policyseq23:1.0
+
+---
+kind: PolicySequence
+apiVersion: api.webmethods.io/beta
+metadata:
+  name: policyseq23
+  version: 1.0
+  namespace: dev_all
+  tags:
+    - seq
+spec:
+  transport:
+    - $ref: dev_all:transport23:alpha
+  iam:
+    - $ref: dev_all:My_IAM:alpha
+  monitoring:
+    - $ref: dev_all:log_invocation:alpha
+  routing:
+    - $ref: dev_all:routing:alpha
+  req-processing:
+    - $ref: dev_all:validate_API_Specification_policy:alpha
+    - $ref: dev_all:request_processing_policy:alpha
+  res-processing:
+    - $ref: dev_all:response_processing_policy:alpha
+
+---
+#
+# Copyright Super iPaaS Integration LLC, an IBM Company 2024
+#
+kind: Transport
+apiVersion: api.webmethods.io/beta
+metadata:
+  name: transport23
+  namespace: dev_all
+  version: alpha
+  tags:
+    - transport
+spec:
+  protocol:
+    - http
