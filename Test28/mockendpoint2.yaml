@@ -1,0 +1,24 @@
+---
+kind: MockEndpoint
+apiVersion: api.webmethods.io/beta
+metadata:
+  name: api_mock
+  description: This is the mocking file for Pet store API
+  version: 1.
+  namespace: sample2
+tags:
+  - swaggert
+  - petstore
+  - sample
+  - mock
+type: RESTi
+spec:
+  config:
+    - condition: ($request.path equals v2/pet and $request.method equals GET and
+        $request.query.<key1> equals 'test')
+      response: 
+        $ref: sample2:api_response:1.0
+
+    - condition: default
+      response: 
+        $ref: sample2:api_response:1.0
