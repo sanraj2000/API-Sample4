@@ -1,0 +1,22 @@
+kind: MockResponse
+apiVersion: api.webmethods.io/beta
+metadata:
+  name: api_response
+  description: This is the mocking file for Pet store API
+  version: 1.0
+  namespace: sample2
+tags:
+  - swagger
+  - petstore
+  - sample
+  - mock
+spec:
+    code: 201
+    headers:
+      - key: auth
+        value: <token>
+    data:
+     -  contentType: application/json
+        content:
+          url: ${request.body.url}
+          message: Please find the url
