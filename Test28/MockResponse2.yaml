@@ -13,7 +13,7 @@ tags:
 spec:
     code: 201
     headers:
-      - key: auth
+      - key: autheration
         value: <token>
     data:
      -  contentType: application/json
